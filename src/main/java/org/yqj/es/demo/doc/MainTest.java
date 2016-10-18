@@ -12,7 +12,6 @@ import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.transport.InetSocketTransportAddress;
 import org.elasticsearch.common.xcontent.XContentFactory;
-import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.SearchHit;
 
@@ -26,10 +25,10 @@ import java.util.Date;
  */
 public class MainTest {
 
-    public static void main(String[] args) throws Exception {
-        System.out.println("test client api");
-
-        searchIndexTest();
+//    public static void main(String[] args) throws Exception {
+//        System.out.println("test client api");
+//
+//        searchIndexTest();
 
 //        bulkIndexTest();
 
@@ -38,7 +37,7 @@ public class MainTest {
 //        indexCreateTest();
 
 //        indexGetTest();
-    }
+//    }
 
 
     public static void searchIndexTest() throws Exception{
