@@ -23,7 +23,7 @@ import java.util.Date;
  * org elasticsearch java client api test
  * 测试 java client 配置方式
  */
-public class MainTest {
+public class EsMainTest2x {
 
 //    public static void main(String[] args) throws Exception {
 //        System.out.println("test client api");
