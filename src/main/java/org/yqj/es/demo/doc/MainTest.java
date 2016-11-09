@@ -42,20 +42,20 @@ public class MainTest {
 
     public static void searchIndexTest() throws Exception{
 
-        Client client = buildClient();
-
-        SearchResponse searchResponse = client.prepareSearch("twitter")
-                .setTypes("tweet").setSearchType(SearchType.DFS_QUERY_THEN_FETCH)
-                .setQuery(QueryBuilders.termQuery("multi", "test"))
-                .setPostFilter(QueryBuilders.rangeQuery("age").from(12).to(18))
-                .setFrom(0).setSize(60).setExplain(true)
-                .execute().actionGet();
-
-        for(SearchHit searchHit : searchResponse.getHits().getHits()){
-            System.out.println(searchHit.toString());
-        }
-
-        client.close();
+//        Client client = buildClient();
+//
+//        SearchResponse searchResponse = client.prepareSearch("twitter")
+//                .setTypes("tweet").setSearchType(SearchType.DFS_QUERY_THEN_FETCH)
+//                .setQuery(QueryBuilders.termQuery("multi", "test"))
+//                .setPostFilter(QueryBuilders.rangeQuery("age").from(12).to(18))
+//                .setFrom(0).setSize(60).setExplain(true)
+//                .execute().actionGet();
+//
+//        for(SearchHit searchHit : searchResponse.getHits().getHits()){
+//            System.out.println(searchHit.toString());
+//        }
+//
+//        client.close();
 
     }
 
@@ -158,14 +158,15 @@ public class MainTest {
      */
     public static Client buildClient() throws Exception {
 
-        Settings settings = Settings.builder()
-                .put("cluster.name","elasticsearch")
-                .put("client.transport.sniff",true)
-                .build();
-
-        return TransportClient.builder()
-                .settings(settings)
-                .build().addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName("192.168.240.128"), 9300));
+//        Settings settings = Settings.builder()
+//                .put("cluster.name","elasticsearch")
+//                .put("client.transport.sniff",true)
+//                .build();
+//
+//        return TransportClient.builder()
+//                .settings(settings)
+//                .build().addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName("192.168.240.128"), 9300));
+        return null;
     }
 
 }

@@ -19,10 +19,15 @@ public class EsDatasourceMain {
         DruidDataSource dds = (DruidDataSource) ElasticSearchDruidDataSourceFactory.createDataSource(properties);
         dds.setInitialSize(1);
         Connection connection = dds.getConnection();
-        PreparedStatement ps = connection.prepareStatement("select * from teacher");
+        PreparedStatement ps = connection.prepareStatement("select * from student");
         ResultSet resultSet = ps.executeQuery();
         while (resultSet.next()) {
-            System.out.println(resultSet.getString("name"));
+            System.out.println("-------------------------------");
+            System.out.print(" id : "+resultSet.getInt("id"));
+            System.out.print(" name : "+resultSet.getString("name"));
+            System.out.print(" age : "+resultSet.getInt("age"));
+            System.out.println(" grade : "+resultSet.getDouble("grade"));
+            System.out.println("-------------------------------");
         }
 
         ps.close();
