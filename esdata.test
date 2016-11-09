@@ -1,0 +1,174 @@
+{
+    "student": {
+        "mappings": {
+            "student": {
+                "properties": {
+                    "age": {
+                        "type": "integer"
+                    },
+                    "grade": {
+                        "type": "double"
+                    },
+                    "id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}
+
+{
+    "took": 1,
+    "timed_out": false,
+    "_shards": {
+        "total": 5,
+        "successful": 5,
+        "failed": 0
+    },
+    "hits": {
+        "total": 3,
+        "max_score": 1,
+        "hits": [
+            {
+                "_index": "student",
+                "_type": "student",
+                "_id": "1",
+                "_score": 1,
+                "_source": {
+                    "id": 1,
+                    "name": "yao",
+                    "age": 18,
+                    "grade": 98.5
+                }
+            },
+            {
+                "_index": "student",
+                "_type": "student",
+                "_id": "2",
+                "_score": 1,
+                "_source": {
+                    "id": 2,
+                    "name": "qi",
+                    "age": 18,
+                    "grade": 98.5
+                }
+            },
+            {
+                "_index": "student",
+                "_type": "student",
+                "_id": "3",
+                "_score": 1,
+                "_source": {
+                    "id": 3,
+                    "name": "jun",
+                    "age": 18,
+                    "grade": 98.5
+                }
+            }
+        ]
+    }
+}
+
+
+
+{
+    "teacher": {
+        "mappings": {
+            "teacher_info": {
+                "properties": {
+                    "age": {
+                        "type": "integer"
+                    },
+                    "id": {
+                        "type": "long"
+                    },
+                    "name": {
+                        "type": "string",
+                        "index": "not_analyzed"
+                    },
+                    "salary": {
+                        "type": "nested",
+                        "properties": {
+                            "basic": {
+                                "type": "double"
+                            },
+                            "improve": {
+                                "type": "double"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+{
+    "took": 15,
+    "timed_out": false,
+    "_shards": {
+        "total": 5,
+        "successful": 5,
+        "failed": 0
+    },
+    "hits": {
+        "total": 2,
+        "max_score": 1,
+        "hits": [
+            {
+                "_index": "teacher",
+                "_type": "teacher_info",
+                "_id": "1",
+                "_score": 1,
+                "_source": {
+                    "id": "1",
+                    "name": "yao",
+                    "age": 100,
+                    "salary": [
+                        {
+                            "basic": 100,
+                            "improve": 20
+                        },
+                        {
+                            "basic": 100,
+                            "improve": 20
+                        },
+                        {
+                            "basic": 100,
+                            "improve": 20
+                        }
+                    ]
+                }
+            },
+            {
+                "_index": "teacher",
+                "_type": "teacher_info",
+                "_id": "2",
+                "_score": 1,
+                "_source": {
+                    "id": "2",
+                    "name": "qi",
+                    "age": 100,
+                    "salary": [
+                        {
+                            "basic": 100,
+                            "improve": 20
+                        },
+                        {
+                            "basic": 100,
+                            "improve": 20
+                        },
+                        {
+                            "basic": 100,
+                            "improve": 20
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}
