@@ -1,7 +1,6 @@
 package org.yqj.es.demo;
 
 import com.google.common.collect.Lists;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -12,8 +11,7 @@ import org.springframework.stereotype.Component;
  * Descirbe:
  */
 @Component
-@Slf4j
-public class RunCommanLine implements CommandLineRunner{
+public class RunCommandLine implements CommandLineRunner{
 
     public void run(String... args) throws Exception {
         System.out.println("now command line run ");
