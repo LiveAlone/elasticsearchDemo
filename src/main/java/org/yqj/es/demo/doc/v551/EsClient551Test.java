@@ -4,6 +4,9 @@ import org.elasticsearch.action.admin.indices.delete.DeleteIndexRequest;
 import org.elasticsearch.action.bulk.BulkItemResponse;
 import org.elasticsearch.action.bulk.BulkRequestBuilder;
 import org.elasticsearch.action.bulk.BulkResponse;
+import org.elasticsearch.action.index.IndexResponse;
+import org.elasticsearch.action.update.UpdateRequestBuilder;
+import org.elasticsearch.action.update.UpdateResponse;
 import org.elasticsearch.client.Client;
 import org.elasticsearch.client.IndicesAdminClient;
 import org.elasticsearch.common.settings.Settings;
@@ -58,7 +61,11 @@ public class EsClient551Test {
         public void run() {
             while (isRunning){
                 try {
-                    postSingleBulkData();
+//                    postSingleBulkData();
+
+//                    indexSingleData();
+
+                    upsertDocument();
                 }catch (Exception e){
                     System.out.println("!! ERROR post content");
                     continue;
@@ -73,6 +80,24 @@ public class EsClient551Test {
         }
     }
 
+    private static boolean upsertDocument(){
+        ContentConstant.addId();
+        XContentBuilder xContentBuilder = ContentConstant.buildPostDataWithRandom();
+        UpdateRequestBuilder builder = client.prepareUpdate(ContentConstant.INDEX_NAME, ContentConstant.TYPE, ContentConstant.id.toString()).setDoc(xContentBuilder)
+                .setDocAsUpsert(true);
+        UpdateResponse updateResponse = builder.get();
+        return true;
+    }
+
+    // index single data
+    private static boolean indexSingleData(){
+        ContentConstant.addId();
+        XContentBuilder xContentBuilder =  ContentConstant.buildPostDataWithRandom();
+        IndexResponse indexResponse = client.prepareIndex(ContentConstant.INDEX_NAME, ContentConstant.TYPE, ContentConstant.id.toString())
+                .setSource(xContentBuilder)
+                .get();
+        return true;
+    }
 
     private static boolean postSingleBulkData(){
         BulkRequestBuilder bulkRequestBuilder = client.prepareBulk();

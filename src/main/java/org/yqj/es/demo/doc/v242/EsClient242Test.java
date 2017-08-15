@@ -1,4 +1,4 @@
-//package org.yqj.es.demo.doc.v171;
+//package org.yqj.es.demo.doc.v242;
 //
 //import org.elasticsearch.action.admin.indices.delete.DeleteIndexRequest;
 //import org.elasticsearch.action.bulk.BulkItemResponse;
@@ -10,12 +10,13 @@
 //import org.elasticsearch.client.Client;
 //import org.elasticsearch.client.IndicesAdminClient;
 //import org.elasticsearch.client.transport.TransportClient;
-//import org.elasticsearch.common.settings.ImmutableSettings;
-//import org.elasticsearch.common.settings.Settings;
 //import org.elasticsearch.common.transport.InetSocketTransportAddress;
 //import org.elasticsearch.common.unit.TimeValue;
 //import org.elasticsearch.common.xcontent.XContentBuilder;
+//import org.yqj.es.demo.doc.v171.ContentConstant;
 //
+//import java.net.InetAddress;
+//import java.net.UnknownHostException;
 //import java.util.concurrent.ExecutorService;
 //import java.util.concurrent.Executors;
 //import java.util.concurrent.ScheduledExecutorService;
@@ -24,14 +25,14 @@
 ///**
 // * Created by yaoqijun on 2017/8/12.
 // */
-//public class EsClient171Test {
+//public class EsClient242Test {
 //
 //    private static Client client = null;
 //
 //    private static Long totalPostCount = 0L;
 //
-//    public static void main(String[] args) {
-//        System.out.println("start to test 171");
+//    public static void main(String[] args) throws Exception {
+//        System.out.println("start to test 242");
 //        buildClient();
 //        cleanIndex(ContentConstant.INDEX_NAME);
 //
@@ -145,14 +146,16 @@
 //                .get(TimeValue.timeValueSeconds(10));
 //    }
 //
-//    private static void buildClient(){
-//        Settings settings = ImmutableSettings.settingsBuilder()
-//                .put("cluster.name", "elasticsearch")
-//                .put("client.transport.sniff",true)
-//                .build();
-//        client = new TransportClient(settings)
+//    private static void buildClient() throws UnknownHostException{
+////        Settings settings = Settings.settingsBuilder()
+////                .put("cluster.name", "elasticsearch")
+////                .put("client.transport.sniff",true)
+////                .build();
+//        client = TransportClient.builder()
+////                .settings(settings)
+//                .build()
 //                .addTransportAddress(
-//                        new InetSocketTransportAddress("localhost", 9300));
+//                        new InetSocketTransportAddress(InetAddress.getByName("localhost"), 9300));
 //    }
 //
 //    private static void close(){
