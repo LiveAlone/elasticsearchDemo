@@ -1,4 +1,4 @@
-package org.yqj.es.demo.doc.v551;
+package org.yqj.es.demo.doc.v5x;
 
 import org.elasticsearch.action.admin.indices.delete.DeleteIndexRequest;
 import org.elasticsearch.action.bulk.BulkItemResponse;
@@ -61,11 +61,11 @@ public class EsClient551Test {
         public void run() {
             while (isRunning){
                 try {
-//                    postSingleBulkData();
+                    postSingleBulkData();
 
 //                    indexSingleData();
 
-                    upsertDocument();
+//                    upsertDocument();
                 }catch (Exception e){
                     System.out.println("!! ERROR post content");
                     continue;
@@ -140,7 +140,7 @@ public class EsClient551Test {
                 .build();
         client = new PreBuiltTransportClient(settings)
                 .addTransportAddress(
-                        new InetSocketTransportAddress(InetAddress.getByName("localhost"), 9300));
+                        new InetSocketTransportAddress(InetAddress.getByName("172.20.12.156"), 9300));
     }
 
     private static void close(){
